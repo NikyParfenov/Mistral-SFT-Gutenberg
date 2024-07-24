@@ -5,7 +5,7 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 RUN pip install -q git+https://github.com/huggingface/transformers.git
 RUN pip install -q git+https://github.com/huggingface/peft.git
-
+RUN curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list
 
 COPY . /code
 EXPOSE 8001

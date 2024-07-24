@@ -9,6 +9,7 @@ from serpersearch import run_google_search
 
 class FTMistral:
     def __init__(self):
+        logger.info('Loading models...')
         adapter_model = "NikyParfenov/mistral-gutenberg-books-finetune"
         base_model_id = "mistralai/Mistral-7B-v0.1"
 
@@ -30,6 +31,7 @@ class FTMistral:
             trust_remote_code=True,
         )
         self.ft_model = PeftModel.from_pretrained(base_model, adapter_model)
+        logger.info('LLM is ready!')
 
 
     def run_llm(self, prompt, use_google_search=True):

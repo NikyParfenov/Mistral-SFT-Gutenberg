@@ -1,5 +1,5 @@
 import streamlit as st
-from llm_model import FTMistral
+from llm_model import FTMistral, llm
 from loguru import logger
 
 logger.add(
@@ -8,8 +8,6 @@ logger.add(
     format="<g>{time:YYYY-MM-DD HH:mm:ss.SS!UTC}</g> <r>|</r> <y>{level}</y> <r>|</r> <w>{message}</w>",
     colorize=True
             )
-
-llm = FTMistral()
 
 st.title("💬 Chatbot")
 

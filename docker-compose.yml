@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+
+  streamlit:
+    container_name: streamlit
+    env_file:
+      - .env
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+        - 8001:8001

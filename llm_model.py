@@ -1,5 +1,6 @@
 import re
 import torch
+from loguru import logger
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
 
@@ -8,8 +9,9 @@ from serpersearch import run_google_search
 
 class FTMistral:
     def __init__(self):
-        adapter_model = "ft_model/mistral-gutenberg-books-finetune"
-        base_model_id = "base_model/Mistral-7B-v0.1"
+        logger.info('Loading models...')
+        adapter_model = "NikyParfenov/mistral-gutenberg-books-finetune"
+        base_model_id = "mistralai/Mistral-7B-v0.1"
 
         bnb_config = BitsAndBytesConfig(
             load_in_4bit=True,
@@ -32,6 +34,7 @@ class FTMistral:
         )
 
         self.ft_model = PeftModel.from_pretrained(base_model, adapter_model)
+        logger.info('Loading models has been finished succesfully!')
 
 
     def run_llm(self, prompt, use_google_search=True):
@@ -40,9 +43,10 @@ class FTMistral:
         if use_google_search:
             try:
                 rag = run_google_search(prompt)
-            except:
-                rag = '[]'
-
+                logger.info(f'Google search has been finished!')
+            except Exception as e:
+                logger.error(f'Google search error: {e}')
+                
         eval_prompt = "### {rag}\n### Question: {input}\n### Answer:".format(rag=rag, input=prompt)
         model_input = self.tokenizer(eval_prompt, return_tensors="pt").to("cuda")
 

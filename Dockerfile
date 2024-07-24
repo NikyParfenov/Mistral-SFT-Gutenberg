@@ -6,7 +6,7 @@ ENV PIP_ROOT_USER_ACTION=ignore
 
 WORKDIR /code 
 COPY ./requirements.txt /code/requirements.txt
-COPY ./download_models.py /code/download_models.py
+# COPY ./download_models.py /code/download_models.py
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 RUN pip install -q git+https://github.com/huggingface/transformers.git

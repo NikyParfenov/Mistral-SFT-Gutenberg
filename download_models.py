@@ -44,5 +44,4 @@ def download_model(model_path='base_model/', ft_model_path='ft_model/'):
     tokenizer.save_pretrained(model_path)
     model.save_pretrained(ft_model_path)
 
-# For this demo, download the English-French and French-English models
 download_model()

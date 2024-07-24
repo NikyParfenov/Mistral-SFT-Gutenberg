@@ -19,6 +19,10 @@ def download_model(model_path='base_model/', ft_model_path='ft_model/'):
     adapter_model = "NikyParfenov/mistral-gutenberg-books-finetune"
     base_model_id = "mistralai/Mistral-7B-v0.1"
 
+    def get_device_map() -> str:
+        return 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = get_device_map()
+
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_use_double_quant=True,
@@ -29,7 +33,7 @@ def download_model(model_path='base_model/', ft_model_path='ft_model/'):
     base_model = AutoModelForCausalLM.from_pretrained(
         base_model_id, 
         quantization_config=bnb_config, 
-        device_map="auto",
+        device_map=device,
         trust_remote_code=True,
     )
 

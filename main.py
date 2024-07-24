@@ -1,5 +1,13 @@
 import streamlit as st
 from llm_model import FTMistral
+from loguru import logger
+
+logger.add(
+    sink='logs_loguru/loguru_{time:YYYY-MM-DD}.log',
+    rotation='00:00',
+    format="<g>{time:YYYY-MM-DD HH:mm:ss.SS!UTC}</g> <r>|</r> <y>{level}</y> <r>|</r> <w>{message}</w>",
+    colorize=True
+            )
 
 llm = FTMistral()
 

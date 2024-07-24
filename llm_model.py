@@ -1,7 +1,5 @@
-import os
 import re
 import torch
-import transformers
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
 
@@ -10,8 +8,8 @@ from serpersearch import run_google_search
 
 class FTMistral:
     def __init__(self):
-        adapter_model = "NikyParfenov/mistral-gutenberg-books-finetune"
-        base_model_id = "mistralai/Mistral-7B-v0.1"
+        adapter_model = "ft_model/mistral-gutenberg-books-finetune"
+        base_model_id = "base_model/Mistral-7B-v0.1"
 
         bnb_config = BitsAndBytesConfig(
             load_in_4bit=True,

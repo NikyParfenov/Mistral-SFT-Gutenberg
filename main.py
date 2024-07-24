@@ -15,6 +15,5 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     response = llm.run_llm(prompt, use_google_search=True)
-    response = 'Test'
     st.session_state.messages.append({"role": "assistant", "content": response})
     st.chat_message("assistant").write(response)

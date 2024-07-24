@@ -1,14 +1,13 @@
 FROM python:3.10
 WORKDIR /code 
 COPY ./requirements.txt /code/requirements.txt
+COPY ./download_models.py /code/download_models.py
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 RUN pip install -q git+https://github.com/huggingface/transformers.git
 RUN pip install -q git+https://github.com/huggingface/peft.git
 RUN curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list
-
-COPY ./download_models.py /code/download_models.py
-RUN python3 /code/download_models.py
+# RUN python3 /code/download_models.py
 
 COPY . /code
 EXPOSE 8001

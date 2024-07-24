@@ -6,6 +6,7 @@ services:
     container_name: streamlit
     env_file:
       - .env
+    command: python download_models.py
     build: 
       context: .
       dockerfile: Dockerfile

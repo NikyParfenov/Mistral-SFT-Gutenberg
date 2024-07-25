@@ -38,3 +38,14 @@ Step	Training Loss	Validation Loss	Rouge1	Rouge2	Rougel	Rougelsum	Gen Len
 ## Add google web search
 Additionally, web search and including obtained data to the model has been added. Web search extracts only snippets and titles of first 20 records and puts these data in the context of LLM. The result is presented below. Metrics got worse due to additional noise of web search.
 ```'rouge1': 0.41674781502238, 'rouge2': 0.161282673305801, 'rougeL': 0.28228741048070916, 'rougeLsum': 0.28216720843692855```
+
+# Run demo
+### Requirements
+* The script has been optimized for AWS EC2 instance g5.xlarge, AMI: Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.3 (Ubuntu 20.04).
+* Open 8001 port in inbound rules in sec. group for the instance
+### Run script
+* To run script just build docker image by command:
+```docker compose up --build -d```  
+* Open streamlit application in url: <ec2_url>:8001  
+
+Enjoy!

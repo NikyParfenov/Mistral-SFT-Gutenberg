@@ -40,6 +40,7 @@ Additionally, web search and including obtained data to the model has been added
 ```'rouge1': 0.41674781502238, 'rouge2': 0.161282673305801, 'rougeL': 0.28228741048070916, 'rougeLsum': 0.28216720843692855```
 
 # Run demo
+Demo record: https://drive.google.com/file/d/1wwEniqx3eIOGk6zcyVnIxV2vpg7vhjU3/view?usp=sharing
 ### Requirements
 * The script has been optimized for AWS EC2 instance g5.xlarge, AMI: Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.3 (Ubuntu 20.04).
 * Open 8001 port in inbound rules in sec. group for the instance

@@ -47,6 +47,6 @@ Additionally, web search and including obtained data to the model has been added
 * Create env file: ```cp .env.example .env``` and fill it by HF API key and Serper Search API key. Note: HF account should be available to download mistral model. If not, go to https://huggingface.co/mistralai/Mistral-7B-v0.1 and agree terms and conditions.
 * To run script just build docker image by command:
 ```docker compose up --build -d```  
-* Open streamlit application in url: ```http://<ec2_url>:8001``` (for example: http://ec2-52-29-45-107.eu-central-1.compute.amazonaws.com:8001)
+* Open streamlit application in url: ```http://<ec2_url>:8001``` (for example: http://ec2-52-29-45-107.eu-central-1.compute.amazonaws.com:8001). The first initiation can take about 5 minutes due to model loading.
 
 Enjoy!

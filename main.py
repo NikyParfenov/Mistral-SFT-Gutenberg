@@ -1,5 +1,5 @@
 import streamlit as st
-from llm_model import FTMistral, llm
+from llm_model import llm
 # from loguru import logger
 
 # logger.add(
